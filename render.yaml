@@ -1,0 +1,6 @@
+services:
+  - type: api
+    name: convex
+    env: docker
+    plan: free
+    autoDeploy: true
