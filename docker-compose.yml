@@ -65,5 +65,22 @@ services:
       backend:
         condition: service_healthy
 
+  # Mirrors the convex-server-site proxy in render.yaml, so the Caddyfile
+  # can be tested locally before it's deployed. Not required for local dev
+  # since `backend` already exposes 3211 directly - only useful to verify
+  # the proxy config itself.
+  site-proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile.site-proxy
+    ports:
+      - "${SITE_PROXY_PUBLIC_PORT:-8091}:8091"
+    environment:
+      - PORT=8091
+      - BACKEND_HOST=backend
+    depends_on:
+      backend:
+        condition: service_healthy
+
 volumes:
   data:
