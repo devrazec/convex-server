@@ -1,6 +1,37 @@
 services:
-  - type: api
-    name: convex
-    env: docker
+  # Runs the actual convex-backend process and owns the persistent data disk.
+  # Public URL becomes CONVEX_CLOUD_ORIGIN (the API the client SDK/CLI talk to).
+  - type: web
+    name: convex-server
+    runtime: docker
+    dockerfilePath: ./Dockerfile.backend
+    plan: starter
+    healthCheckPath: /version
+    disk:
+      name: convex-data
+      mountPath: /convex/data
+      sizeGB: 10
+    envVars:
+      - key: PORT
+        value: 3210
+      - key: CONVEX_CLOUD_ORIGIN
+        value: https://convex-server.onrender.com
+      - key: CONVEX_SITE_ORIGIN
+        value: https://convex-server-site.onrender.com
+      - key: INSTANCE_SECRET
+        generateValue: true
+
+  # Thin Caddy reverse proxy exposing the backend's private-network-only
+  # site/HTTP-actions port (3211) publicly. Becomes CONVEX_SITE_ORIGIN above.
+  # Stateless, so it stays on the free plan even though the backend is paid.
+  - type: web
+    name: convex-server-site
+    runtime: docker
+    dockerfilePath: ./Dockerfile.site-proxy
     plan: free
-    autoDeploy: true
+    envVars:
+      - key: BACKEND_HOST
+        fromService:
+          name: convex-server
+          type: web
+          property: host
