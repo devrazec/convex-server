@@ -11,6 +11,17 @@ const schema = defineSchema({
   })
     .index("byRoom", ["room"])
     .index("byRoomAndUser", ["room", "user"]),
+  banners: defineTable({
+    title: v.string(),
+    subtitle: v.optional(v.string()),
+    image_url: v.optional(v.string()),
+    audio_url: v.optional(v.string()),
+    video_url: v.optional(v.string()),
+    button_url: v.optional(v.string()),
+    date: v.string(),
+    sort: v.number(),
+    enable: v.number(),
+  }).index("bySort", ["sort"]),
 });
 
 export default schema;

@@ -30,3 +30,15 @@ export const count = query({
     return rows.filter((r) => r.lastSeen > cutoff).length;
   },
 });
+
+export const list = query({
+  args: { room: v.string() },
+  handler: async (ctx, { room }) => {
+    const cutoff = Date.now() - ONLINE_WINDOW_MS;
+    const rows = await ctx.db
+      .query("presence")
+      .withIndex("byRoom", (q) => q.eq("room", room))
+      .collect();
+    return rows.filter((r) => r.lastSeen > cutoff).map((r) => r.user);
+  },
+});
