@@ -72,7 +72,7 @@ openssl rand -hex 32
 add this key to render environment keys as INSTANCE_SECRET
 
 docker run --rm \
-  -e INSTANCE_SECRET='9cf3b2bbe3fc4ce81759390083a4b41040dc04631ad3dda4d9dcfe3ed09b8d92' \
+  -e INSTANCE_SECRET='past_here_the_secret_generated' \
   --entrypoint ./generate_admin_key.sh \
   ghcr.io/get-convex/convex-backend:latest
 
