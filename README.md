@@ -62,3 +62,5 @@ npm install @convex-dev/auth @auth/core@0.41.1
 maxchip@outlook.com
 
 https://convex-server.onrender.com
+
+docker run -e 'NEXT_PUBLIC_DEPLOYMENT_URL=https://convex-server.onrender.com' -p '6791:6791' ghcr.io/get-convex/convex-dashboard:latest
