@@ -56,3 +56,9 @@ npm install @convex-dev/auth @auth/core@0.41.1
 #
 #   render ssh convex-server -- ./generate_admin_key.sh
 
+
+# Render Dashboard
+
+maxchip@outlook.com
+
+https://convex-server.onrender.com
