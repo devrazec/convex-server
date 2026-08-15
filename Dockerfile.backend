@@ -1,4 +1,4 @@
-ARG CONVEX_REV=latest
+ARG CONVEX_REV=1.42.3
 
 FROM ghcr.io/get-convex/convex-backend:${CONVEX_REV}
 
