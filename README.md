@@ -87,3 +87,22 @@ docker run -e 'NEXT_PUBLIC_DEPLOYMENT_URL=https://convex-server.onrender.com' -p
 add to env.local CONVEX_SELF_HOSTED_URL NEXT_PUBLIC_DEPLOYMENT_URL CONVEX_SELF_HOSTED_ADMIN_KEY
 
 npx convex deploy
+
+# Deploy on convex free account
+
+npx convex login status
+
+npx convex login --force
+
+npx convex dev --once --configure new
+
+npx convex deployment token create ci-token --save-env
+
+npx convex dev
+
+npx convex dev --once --configure existing --team devrazec --project jota --dev-deployment cloud
+
+npx convex deploy
+
+npx convex deploy --dry-run 2>&1 | head -60
+
