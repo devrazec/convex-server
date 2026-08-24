@@ -106,3 +106,22 @@ npx convex deploy
 
 npx convex deploy --dry-run 2>&1 | head -60
 
+# Create a new Convex DB to Lapidus App
+
+Create a new .env.local file and add 4 keys
+
+CONVEX_DEPLOY_KEY=''     // Get from your Convex Comtrol Panel Personal Access Tokens https://dashboard.convex.dev/profile#personal-access-tokens
+
+CONVEX_DEPLOYMENT=       // It will be add after the creation of the DB
+CONVEX_URL=              // It will be add after the creation of the DB
+CONVEX_SITE_URL=         // It will be add after the creation of the DB
+
+npx convex login status                    // check if you are loged
+npx convex dev --once --configure new      // Create the DB
+
+Project name: lapidus
+Europe (Ireland)
+Created project lapidus, manage it at https://dashboard.convex.dev/t/maxchip/lapidus
+? Set up Convex AI files? (guidelines, AGENTS.md, agent skills) (Y/n) n
+
+copy the CONVEX_URL from the .env.local to the App.js DEFAULT_CONVEX_URL
