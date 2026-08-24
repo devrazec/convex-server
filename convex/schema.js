@@ -12,7 +12,7 @@ const schema = defineSchema({
     .index("byRoom", ["room"])
     .index("byRoomAndUser", ["room", "user"]),
   content: defineTable({
-    id: v.number(),
+    sqlite_id: v.number(),
     reference: v.optional(v.string()),
     title: v.optional(v.string()),
     subtitle: v.optional(v.string()), 
@@ -34,7 +34,7 @@ const schema = defineSchema({
     option_evolve: v.optional(v.string()),
     sort: v.number(),
     enable: v.number(),
-    action: v.string(),
+    action: v.optional(v.string()),
     date: v.string(),
   }).index("bySort", ["sort"]),
 });

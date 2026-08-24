@@ -110,7 +110,7 @@ npx convex deploy --dry-run 2>&1 | head -60
 
 Create a new .env.local file and add 4 keys
 
-CONVEX_DEPLOY_KEY=''     // Get from your Convex Comtrol Panel Personal Access Tokens https://dashboard.convex.dev/profile#personal-access-tokens
+CONVEX_DEPLOY_KEY=''     // Get from your Convex Comtrol Panel Team Access Tokens https://dashboard.convex.dev/t/maxchip/settings/access-tokens
 
 CONVEX_DEPLOYMENT=       // It will be add after the creation of the DB
 CONVEX_URL=              // It will be add after the creation of the DB
@@ -126,4 +126,29 @@ Created project lapidus, manage it at https://dashboard.convex.dev/t/maxchip/lap
 
 copy the CONVEX_URL from the .env.local to the App.js DEFAULT_CONVEX_URL
 
-# Update fields in Convex DB from Lapidus App
+# Setup Convex DB for E-JOTA
+CONVEX_DEPLOY_KEY='dev:little-elephant-254|eyJ2MiI6IjRhZWEzNDljNzQ1NjQ3ZjA4YWZhZDlhYTkxYzNiMGI3In0='
+CONVEX_DEPLOYMENT=dev:little-elephant-254 # team: maxchip, project: e-jota
+CONVEX_URL=https://little-elephant-254.convex.cloud
+CONVEX_SITE_URL=https://little-elephant-254.convex.site
+
+# 1 - Setup Convex DB for Lapidus
+
+CONVEX_DEPLOY_KEY="dev:posh-shrimp-946|eyJ2MiI6ImYyYWEyYWVlZDMxNTQ4M2JiZjMzZDlhNzg2YmRjOGNiIn0="
+CONVEX_DEPLOYMENT=dev:posh-shrimp-946 # team: maxchip, project: lapidus
+CONVEX_URL=https://posh-shrimp-946.eu-west-1.convex.cloud
+CONVEX_SITE_URL=https://posh-shrimp-946.eu-west-1.convex.site
+
+# 2 - Delete all records from a table
+
+npx convex login status or npx convex login --force
+
+npx convex import --table content --replace --format jsonLines /dev/null -y
+
+# 3 - Update fields in Convex DB from Lapidus App
+
+npx convex deploy
+
+# 4 - Import new data
+
+npx convex import --table content --replace data/content-lapidus.json
