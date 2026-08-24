@@ -34,6 +34,7 @@ const schema = defineSchema({
     option_evolve: v.optional(v.string()),
     sort: v.number(),
     enable: v.number(),
+    action: v.string(),
     date: v.string(),
   }).index("bySort", ["sort"]),
 });

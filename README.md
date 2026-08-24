@@ -125,3 +125,5 @@ Created project lapidus, manage it at https://dashboard.convex.dev/t/maxchip/lap
 ? Set up Convex AI files? (guidelines, AGENTS.md, agent skills) (Y/n) n
 
 copy the CONVEX_URL from the .env.local to the App.js DEFAULT_CONVEX_URL
+
+# Update fields in Convex DB from Lapidus App
