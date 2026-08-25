@@ -24,7 +24,8 @@ export const get = query({
 
 export const create = mutation({
   args: {
-    sqlite_id: v.number(),
+    source_id: v.number(),
+    subject_id: v.number(),
     reference: v.optional(v.string()),
     title: v.optional(v.string()),
     subtitle: v.optional(v.string()),
@@ -57,7 +58,8 @@ export const create = mutation({
 export const update = mutation({
   args: {
     id: v.id("content"),
-    sqlite_id: v.optional(v.number()),
+    source_id: v.optional(v.number()),
+    subject_id: v.optional(v.number()),
     reference: v.optional(v.string()),
     title: v.optional(v.string()),
     subtitle: v.optional(v.string()),

@@ -147,7 +147,12 @@ npx convex import --table content --replace --format jsonLines /dev/null -y
 
 # 3 - Update fields in Convex DB from Lapidus App
 
+Edit files or if it's a new table create this file with all CRUD functions
+convex/schema.js
+convex/content.js
+
 npx convex deploy
+npx convex dev --once
 
 # 4 - Import new data
 
