@@ -157,3 +157,17 @@ npx convex dev --once
 # 4 - Import new data
 
 npx convex import --table content --replace data/content-lapidus.json
+
+# 5 - Create Tokens for Convex authentication
+
+node generateKeys.mjs and copy the code and execute the commands
+
+npx convex env set JWT_PRIVATE_KEY="-----BEGIN PRIVATE KEY----- MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDO7+157Dy6TACr URFIs4Wb8N9z2U9suD0NjqYGn695igf8+5DRdUjYzySPG1enRxVuTHMteOEs/u9B kqstINRYLYUpBcQ3R6wAZFQw3BmTi1Tg4x4nRE6re2n7Q7gyRq+nWvvMDB5Jd4rV Fqw2DOCyCd2q1dmAkvCXlYBTQ2IvSii+vt9n5L7MH6gCUed00948apZdRmJ4En8e 1Dgc26lvM+nTQUqKSJGVNb4VD7HrlEC2HIAAfvTQqsCBNmkMM8Py8yXUd1ILMP/M 3F9rHIm0ZCXq8Mog1EFE8uyDO7/tdafTm/ahnFRyYVc1yKmab6WOqFMq0iODqTqi UDrhcEK/AgMBAAECggEABOpx15JzPjEIV7Qqdxx99ok0zbGNBPX6y/kmXC7r7LUI 4TYap8HOVAmBAqicHvGogoEXaq5ImcMz7M4D+fj3LQxmcZCHq5Esy/+WI75UGeCr 81cB2YidCSQlODOmIFpJ2Zhm4InYfayfeYC7Njd9GPhKB0ENlH5+b6NnXn2nIJy/ 5Md2Ow0nKEnA4v3oRsPddCp0GrdjE5ii4cuiyjsvJnDC7ANzKZT9dlfePofmXMBg obwWKVOE2oTuWCsmCUiE1z0Joy/jmWQBDcCou9FjJlR1suHaTxX7LC0ewdxTLFmk RxZUksPAdskdvSTBmGj+Awv87l0kl60fTY9KheQUqQKBgQD883tv+yIQ5kyiQ1Tz cXX9hd1TpW82rI/tKsUThqPQcIo8Mw6vTwiOW0LGECAzdTR83A3Zd/rkOuCf7CoA 5wN+bLzehgkQPStjwAWCEfzsVrGROWgmaLMnSGLQGjD4zdz9G4IqtTbC/92VHJzO NVY7LZy7FVDbugLveGOTqOnYyQKBgQDRbnZ9uofU4Pzzzz8ROiDO+e5e5BpLj7PS iIPL5S3kLvB9nrYgZGqRIot4Grof4vjm4ryIGXbaV5z8CJfzw0/8xg+L+fX6xu8l T/L8SxlfF1QGdGHiIgiO2PgZukmdReK5dA+oR6kIHAIKknGl+wX/WhyP4vS/1Bxc wYTvYOCLRwKBgQDob9zX089D9DwrRvADHBmuM5pjyLtfZEaFSy35eVmCqkd8dfZi hZ95IMdFNYBBiMwIiDV5xlSX8LqEegFG/wEo5UbQvB4L/AmpCcSF932Qt0FID5Zy 5PbrfArA67BgkNsnAmYkVIzTt0aoRLiajEyG6K0DBN1ea5lS8C+gejEYcQKBgQDB yFQbQd0tPIDRl5HjfsWcveWyJ52tDOp2g5pvrz8nQ8eCdLhQgJmacTxbhV9y4bEs 8d9Aj09J+IdpLQpsouwAF8OK4V6ZDDl7bN6IU3TGZ+93iXiIpLUGd/wY0iYLP/7p WlqieqwMtN2uqpI94mdKPzbubDHKzZjwup8mX51lQQKBgDVSgd36TAcfTGtqPC9E uR6sMG0GwlSP18/YJ93Sb9//hFitO4ii4Jj8BKX2qIEfFPEesev2htqaCYMe7Jil TO4doukjdcH8usg2UldW3e436bilfkgpc+COogcbOAflZW18xpQ2lIG5bhupEZF+ jxBFh/wOaOwPHMhBCYCUZEJx -----END PRIVATE KEY-----"
+
+npx convex env set JWKS '{"keys":[{"use":"sig","kty":"RSA","n":"zu_teew8ukwAq1ERSLOFm_Dfc9lPbLg9DY6mBp-veYoH_PuQ0XVI2M8kjxtXp0cVbkxzLXjhLP7vQZKrLSDUWC2FKQXEN0esAGRUMNwZk4tU4OMeJ0ROq3tp-0O4Mkavp1r7zAweSXeK1RasNgzgsgndqtXZgJLwl5WAU0NiL0oovr7fZ-S-zB-oAlHndNPePGqWXUZieBJ_HtQ4HNupbzPp00FKikiRlTW-FQ-x65RAthyAAH700KrAgTZpDDPD8vMl1HdSCzD_zNxfaxyJtGQl6vDKINRBRPLsgzu_7XWn05v2oZxUcmFXNcipmm-ljqhTKtIjg6k6olA64XBCvw","e":"AQAB"}]}'
+
+npx convex env set SITE_URL http://localhost:3000
+
+npx convex env set SITE_URL https://lapidus-dev.vercel.app/
+
+npx convex env list
